@@ -51,14 +51,13 @@
         echo "<br />";
         
         $content = fopen($fileToUpload, "r");
-        
-        // Create container.
-        $blobClient->createContainer($containerName, $createContainerOptions);
-        
-        // if($content){
+
+        if($content){
+            // Create container.
+            $blobClient->createContainer($containerName, $createContainerOptions);
             //Upload blob
             $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-        // }
+        }
 
         // List blobs.
         $listBlobsOptions = new ListBlobsOptions();
