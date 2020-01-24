@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Analyze
+        </title>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+            <script>
+            function chk(){
+                var images = document.getElementById('image');
+                // var dataString='image='+images;
+                // var file = image.files[0];  
+                // var dataString = 'image='+file.name;
+
+                $.ajax({
+                    type:"post",
+                    url:"upload.php",
+                    // data:dataString,
+                    data:images,
+                    cache:false,
+                    success: function(html){
+                        $('#msg').html(html);
+                    }
+                });
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Select image to upload: <input type="file" id="image">
+        <br><br>
+        <input type="submit" value="Submit" onclick="return chk()">
+        <br><br>
+    </form>
+
+    </body>
+</html>
