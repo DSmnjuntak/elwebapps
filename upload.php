@@ -41,9 +41,6 @@
     $containerName = "images";
 
     try {
-        // Create container.
-        $blobClient->createContainer($containerName, $createContainerOptions);
-
         // // Getting local file so that we can upload it to Azure
         $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
         fclose($myfile);
@@ -54,6 +51,9 @@
         echo "<br />";
         
         $content = fopen($fileToUpload, "r");
+        
+        // Create container.
+        $blobClient->createContainer($containerName, $createContainerOptions);
         
         // if($content){
             //Upload blob
